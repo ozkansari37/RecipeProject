@@ -3,20 +3,41 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Recipe Home</title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css">
+    <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>My Recipes!</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-5">
+            <div class="col-11 col-md-6">
+                <div class="card">
+                    <div class="card-header text-center text-white bg-info">
+                        <h1 class="m-0">My Recipes!</h1>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-hover m-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="recipe : ${recipes}">
+                                    <td scope="row" th:text="${recipe.id}"><p>123</p></td>
+                                    <td th:text="${recipe.description}">Tasty Goodness</td>
+                                    <td><a href="#" th:href="@{'/recipe/show/'+${recipe.id}}">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Description</th>
-        </tr>
-        <tr th:each="recipe : ${recipes}">
-            <td th:text="${recipe.id}">123</td>
-            <td th:text="${recipe.description}">Tasty Goodness</td>
-        </tr>
-
-    </table>
 </body>
 </html>
